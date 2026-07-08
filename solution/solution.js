@@ -33,7 +33,7 @@ template += `</ul>`;
     output.insertAdjacentHTML("afterbegin", template);
     
 }
-task2(10);
+task2(8);
 
 
 
