@@ -11,6 +11,7 @@ function task1() {
 	const bodyEl = document.body;
 	return bodyEl;
 }
+
 task1();
 
 // Задача №2
@@ -18,23 +19,20 @@ task1();
 // де count - кількість LI, за замовченням 3
 
 function task2(count = 3) {
-	// ваш код тут
-    const output = document.querySelector(`#task2-output`);
-    let template = ``;
-
-    if(output) {
-        template += `<ul>`;
-for (let i = 0; i < count; i++) {
-    template += `<li>Елемент №${i+1}</li>`;
+  let idEl = document.querySelector("#task2-output");
+   let template=``;
+  if (idEl) {
+   template = `<ul>`;
+   for (let i = 0; i < count; i++) {
+    template+=`<li>item №${i+1}</li>`;
+   }
+   template += `</ul>`
+    console.log(template);
+    idEl.insertAdjacentHTML("afterbegin", template)
+     console.log(idEl);
+  }
 }
-template += `</ul>`;
-    }
-	
-    output.insertAdjacentHTML("afterbegin", template);
-    
-}
-task2(8);
-
+task2(4);
 
 
 // Задача №3
@@ -74,23 +72,19 @@ task4()
 // Прокрутити скрол до елементу з класом 'button'.
 // Функція має викликати scrollIntoView на цьому елементі.
 
-const btn = document.querySelector(`.button`);
-
-function task5 (el) {
+function task5 () {
 	// ваш код тут
-	
-		const block = el.dataset.scroll || 'start';
-        console.log(block);
-el.scrollIntoView({
-    block: block,
+    const btn = document.querySelector(`.button`);
+	if (btn) {
+		btn.scrollIntoView({
+    block: "center",
     inline: "nearest",
     behavior: "smooth"
 })
+	}
+	
     }
-    task5(btn);
-
-
-
+    task5();
 
 // Задача №6
 // Посилання з класом 'link'.
@@ -100,15 +94,27 @@ el.scrollIntoView({
 function task6() {
 	// ваш код тут
 	const linkEl = document.querySelector(`.link`);
-    if(linkEl) {
-        const valueEl = linkEl.dataset.value || 100;
-        console.log(valueEl);
-       if(+valueEl < 200) {
+    
+        linkEl.setAttribute("data-value", "100");
+        console.log(linkEl);
+    if(parseFloat(linkEl.getAttribute("data-value")) < 200) {
+	// if (parseFloat(linkEl.dataset.value) < 200) {
         linkEl.style.color=`red`;
        } 
     }
-}
-task6()
+
+// task6()
+// function task6() {
+//   let linkElement = document.querySelector(".link");
+//   if (linkElement) {
+//     linkElement.setAttribute("data-value", "100");
+//     // const value = parseFloat(linkElement.getAttribute("data-value"));
+//     const value = parseFloat(linkElement.dataset.value);
+//     if (value < 200) {
+//       linkElement.style.color = "red";
+//     }
+//   }
+// }
 
 
 // Не чіпати - потрібно і для тестів, і для браузера
